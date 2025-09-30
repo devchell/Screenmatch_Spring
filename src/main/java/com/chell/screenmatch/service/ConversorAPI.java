@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ConversorAPI implements IConverteDados {
-    private ObjectMapper mapeador = new ObjectMapper();
+    private final ObjectMapper mapeador = new ObjectMapper();
 
     @Override
     public <T> T obterDados(String json, Class<T> classe) {
