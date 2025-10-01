@@ -23,8 +23,12 @@ public class OrganizadorAPI {
     }
 
     public void pegaDadosEp() {
-        this.temporada = lerNumero("Digite a temporada: ");
         this.episodio = lerNumero("Digite o episódio: ");
+        this.temporada = lerNumero("Digite a temporada: ");
+    }
+
+    public void pegaDadosTemp() {
+        this.temporada = lerNumero("Digite a temporada: ");
     }
 
     private int lerNumero(String mensagem) {

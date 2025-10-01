@@ -12,11 +12,29 @@ public record DadosEpisodio(@JsonAlias("Title") String titulo,
                             @JsonAlias("imdbVotes") String votos,
                             @JsonAlias("Runtime") String tempo) {
     @Override
-    public String toString(){
-        return "\n=-=-=-=-=-=-=-= Informações do episódio =-=-=-=-=-=-=-=\n\n" +
-                "Título: " + titulo +
-                "\nEpisódio: " + episodio + " | Tempo: " + tempo + " | Temporada: " + temporada +
-                "\nAvaliação: " + avaliacao + " estrelas | " + votos + " votos" +
-                "\nData de lançamento: " + lancamento;
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n");
+        sb.append("Título: ").append(titulo);
+
+        if (episodio != null) {
+            sb.append("\nEpisódio: ").append(episodio);
+        }
+        if (tempo != null) {
+            sb.append(" | Tempo: ").append(tempo);
+        }
+        if (temporada != null) {
+            sb.append(" | Temporada: ").append(temporada);
+        }
+
+        if (avaliacao != null) {
+            sb.append("\nAvaliação: ").append(avaliacao).append(" estrelas");
+        }
+        if (votos != null) {
+            sb.append(" | ").append(votos).append(" votos");
+        }
+        sb.append("\nData de lançamento: ").append(lancamento != null ? lancamento : "N/A");
+        sb.append("\n---------------------------------------------------------------------");
+        return sb.toString();
     }
 }

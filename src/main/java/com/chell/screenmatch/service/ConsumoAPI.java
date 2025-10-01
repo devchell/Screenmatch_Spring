@@ -23,9 +23,6 @@ public class ConsumoAPI {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
-        System.out.println("Link: " + request);
-
         String json = response.body();
         return json;
     }
@@ -47,7 +44,25 @@ public class ConsumoAPI {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Link: " + request);
+        return response.body();
+    }
+
+    public String obterDadosTemp(String serie, Integer temp, String apiKey) {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://www.omdbapi.com/?t=" + serie +
+                        "&season=" + temp +
+                        "&apikey=" + apiKey))
+                .build();
+        HttpResponse<String> response = null;
+        try {
+            response = client
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return response.body();
     }
 }
